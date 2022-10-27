@@ -1,16 +1,22 @@
-package com.sds.todolist;
+package com.sds.todolist.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@Builder
+
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +32,8 @@ public class Task {
     @Column(length = 20)
     private String status;
 
-    @Column(nullable = false)
+    @CreatedDate
     private LocalDateTime created_date;
-
-    @Column(nullable = false)
+    @LastModifiedDate
     private LocalDateTime modified_date;
-
-    enum status {
-        COMPLETED,
-        REGISTERED,
-        DELETED
-    }
 }
