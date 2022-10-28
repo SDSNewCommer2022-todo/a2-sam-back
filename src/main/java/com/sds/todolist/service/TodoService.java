@@ -16,8 +16,8 @@ public class TodoService {
         this.taskRepository = taskRepository;
     }
 
-    public Long creatTodo(TodoDto.TodoCreateRequest rq){
-        Task task = taskRepository.save(rq.toEntity());
+    public Long creatTodo(TodoDto td){
+        Task task = taskRepository.save(td.toEntity());
         return task.getId();
     }
 }
