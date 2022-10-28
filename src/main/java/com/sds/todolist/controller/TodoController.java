@@ -18,7 +18,6 @@ public class TodoController {
 
     @PostMapping(value="/todo")
     public Long create(@RequestBody TodoDto td){
-        System.out.println(td.toString());
         return todoService.creatTodo(td);
     }
 }
