@@ -17,12 +17,12 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping(value="/post")
+    @PostMapping(value="/todo")
     public Task create(@RequestBody TodoDto td){
         return todoService.creatTodo(td);
     }
 
-    @GetMapping(value = "/todo")
+    @GetMapping
     public List<Task> read(@RequestParam("owner")String owner){
         return todoService.readTodo(owner);
     }
