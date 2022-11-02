@@ -5,6 +5,9 @@ import com.sds.todolist.dto.TodoDto;
 import com.sds.todolist.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TodoService {
     private final TaskRepository taskRepository;
@@ -13,9 +16,12 @@ public class TodoService {
         this.taskRepository = taskRepository;
     }
 
-    public Long creatTodo(TodoDto td){
-        Task task = taskRepository.save(td.toEntity());
-        return task.getId();
+    public Task creatTodo(TodoDto td){
+        return taskRepository.save(td.toEntity());
+    }
+
+    public List<Task> readTodo(String owner) {
+        List<Task> tasks = new ArrayList<Task>();
+        return taskRepository.findAllByOwner(owner);
     }
 }
-

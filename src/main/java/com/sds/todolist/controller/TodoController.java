@@ -1,14 +1,15 @@
 package com.sds.todolist.controller;
 
+import com.sds.todolist.domain.Task;
 import com.sds.todolist.dto.TodoDto;
 import com.sds.todolist.service.TodoService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping(value = "/api")
 public class TodoController {
     final private TodoService todoService;
 
@@ -16,8 +17,13 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping(value="/todo")
-    public Long create(@RequestBody TodoDto td){
+    @PostMapping(value="/create")
+    public Task create(@RequestBody TodoDto td){
         return todoService.creatTodo(td);
+    }
+
+    @GetMapping(value = "/read")
+    public List<Task> read(@RequestParam("owner")String owner){
+        return todoService.readTodo(owner);
     }
 }
