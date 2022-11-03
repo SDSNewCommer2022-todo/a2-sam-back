@@ -22,8 +22,13 @@ public class TodoController {
         return todoService.creatTodo(td);
     }
 
-    @GetMapping
+    @GetMapping(value="/")
     public List<Task> read(@RequestParam("owner")String owner){
         return todoService.readTodo(owner);
+    }
+
+    @PatchMapping
+    public void update(@RequestBody Task t){
+        todoService.updateTodo(t);
     }
 }

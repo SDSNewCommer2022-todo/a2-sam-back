@@ -24,4 +24,8 @@ public class TodoService {
         List<Task> tasks = new ArrayList<Task>();
         return taskRepository.findAllByOwner(owner);
     }
+
+    public void updateTodo(Task task) {
+        taskRepository.save(task);
+    }
 }

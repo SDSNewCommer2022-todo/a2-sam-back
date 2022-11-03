@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 public class TodoDto {
+    private Long Id;
     private String owner;
     private String content;
     private String status;
@@ -22,7 +23,7 @@ public class TodoDto {
         return Task.builder().
                 owner(this.owner).
                 content(this.content).
-                status("test").
+                status("REGISTERED").
                 build();
     }
 }
