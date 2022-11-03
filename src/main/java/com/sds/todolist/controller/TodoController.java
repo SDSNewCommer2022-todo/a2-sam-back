@@ -6,6 +6,7 @@ import com.sds.todolist.service.TodoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin
@@ -22,13 +23,23 @@ public class TodoController {
         return todoService.creatTodo(td);
     }
 
-    @GetMapping(value="/")
-    public List<Task> read(@RequestParam("owner")String owner){
-        return todoService.readTodo(owner);
+    @GetMapping
+    public List<Task> read(@RequestParam("owner")String owner,@RequestParam("orderBy")String orderBy){
+        return todoService.readTodo(owner,orderBy);
     }
 
     @PatchMapping
     public void update(@RequestBody Task t){
         todoService.updateTodo(t);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable("id")Long id){
+        todoService.deleteTodo(id);
+    }
+
+    @DeleteMapping
+    public void deleteAll(@RequestParam("owner")String owner){
+        todoService.deleteAll(owner);
     }
 }

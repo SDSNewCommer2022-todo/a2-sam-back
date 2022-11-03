@@ -33,7 +33,7 @@ public class Task {
     private String status;
 
     @CreatedDate
-    private LocalDateTime created_date;
+    private LocalDateTime createdDate;
     @LastModifiedDate
-    private LocalDateTime modified_date;
+    private LocalDateTime modifiedDate;
 }
