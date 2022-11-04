@@ -16,8 +16,8 @@ public class TodoDto {
     private String owner;
     private String content;
     private String status;
-    private LocalDateTime created_date;
-    private LocalDateTime modified_date;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
     public Task toEntity() {
         return Task.builder().
