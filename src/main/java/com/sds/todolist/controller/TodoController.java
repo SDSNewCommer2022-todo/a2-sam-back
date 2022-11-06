@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/todo")
 public class TodoController {
     final private TodoService todoService;
 
@@ -18,7 +18,7 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping(value="/todo")
+    @PostMapping
     public Task create(@RequestBody TodoDto td){
         return todoService.creatTodo(td);
     }
@@ -38,7 +38,7 @@ public class TodoController {
         todoService.deleteTodo(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping  
     public void deleteAll(@RequestParam("owner")String owner){
         todoService.deleteAll(owner);
     }
